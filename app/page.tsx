@@ -8,7 +8,6 @@ import Pricing from "@/components/home/Pricing";
 export default function Home() {
   return (
     <main className="mx-auto w-full inset-0 h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-      <Banner />
       <div className="flex items-center justify-center">
         <Dot className="text-purple-400"></Dot>
         <Dot className="text-purple-400"></Dot>

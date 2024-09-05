@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans as FontSans} from "next/font/google";
+import { IBM_Plex_Sans as FontSans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/home/Header";
-
+import { ClerkProvider } from "@clerk/nextjs";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,10 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={fontSans.className}>
-        <Header/>
-        <main>{children}</main></body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={fontSans.className}>
+          <Header />
+          <main>{children}</main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

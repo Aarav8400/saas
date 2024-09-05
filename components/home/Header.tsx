@@ -1,5 +1,6 @@
 import { Ghost } from "lucide-react";
 import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const NavLink = ({
   href,
@@ -30,15 +31,23 @@ const Header = () => {
       </div>
       <div className="flex lg:justify-center gap-2 lg:gap-12 lg:items-center ">
         <NavLink href="#/pricing">Pricing</NavLink>
-        <NavLink href="#/posts">Your Posts</NavLink>
+        <SignedIn>
+          <NavLink href="#/posts">Your Posts</NavLink>
+        </SignedIn>
       </div>
       <div className="flex lg:justify-end lg:flex-1">
         <div className="flex gap-2 items-center">
-          <NavLink href="/dashboard">Upload a video</NavLink>
           {/* userProfile */}
+          <SignedIn>
+            <NavLink href="/dashboard">Upload a video</NavLink>
+            <UserButton />
+          </SignedIn>
         </div>
-        <NavLink href="/sign-in">
-        Sign In</NavLink>
+        <SignedOut>
+          <SignInButton>
+            <NavLink href="/sign-in">Sign In</NavLink>
+          </SignInButton>
+        </SignedOut>
       </div>
     </nav>
   );
